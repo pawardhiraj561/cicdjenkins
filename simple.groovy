@@ -9,14 +9,21 @@ pipeline {
             }
         }
         
-        stage('Build') {test22
+        stage('Build') {
             steps {
                 // Build your application (e.g., compile code, run tests)
                 sh 'mvn clean package'
             }
         }
+
+        stage('test') {
+            steps {
+                // Build your application (e.g., compile code, run tests)
+                sh 'test for code'
+            }
+        }
         
-        stage('Test') {
+        stage('test') {
             steps {
                 // Run additional tests or quality checks
                 sh 'mvn test'
