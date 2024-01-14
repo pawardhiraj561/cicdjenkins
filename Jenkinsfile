@@ -1,5 +1,5 @@
 pipeline {
-    agent jnlppod
+    agent any
     
     stages {
         stage('Checkout') {
