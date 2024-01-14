@@ -23,39 +23,12 @@ pipeline {
             }
         }
         
-        stage('test') {
-            steps {
-                // Run additional tests or quality checks
-                sh 'mvn test'
-            }
-        }
-        
-        stage('Deploy to Staging') {
-            steps {
-                // Deploy the application to a staging environment
-                sh './deploy-staging.sh'
-            }
-        }
-        
         stage('Deploy to Production') {
             when {
                 // Define conditions for deploying to production (e.g., manual approval)
-                expression { currentBuild.resultIsBetterOrEqualTo('SUCCESS') }
-            }
-            steps {
-                // Deploy the application to the production environment
-                sh './deploy-production.sh'
+                expression { currentBuild.resultIsBetterOrEqualTo('SUCCESS') {
+            
             }
         }
     }
-    
-    post {
-        success {
-            // Define post-build actions upon successful pipeline completion
-            // Examples: notification, archiving artifacts, etc.
-        }
-        failure {
-            // Define post-build actions upon pipeline failure
-        }
-    }
-}
+
