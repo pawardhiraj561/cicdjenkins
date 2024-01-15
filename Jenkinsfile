@@ -25,10 +25,9 @@ pipeline {
         
         stage('Deploy to Production') {
             when {
-                // Define conditions for deploying to production (e.g., manual approval)
-                expression { currentBuild.resultIsBetterOrEqualTo('SUCCESS') {
-            
+            echo   
             }
-        }
+        }           
     }
-
+}
+                    
